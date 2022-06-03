@@ -4,13 +4,7 @@ import io.sohan.springimg.dtos.ImageDto;
 import io.sohan.springimg.entities.Images;
 import io.sohan.springimg.repository.ImageRepo;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.File;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
 @Service
 public class ImageService {
     private ImageRepo imageRepo;

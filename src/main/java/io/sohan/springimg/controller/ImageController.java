@@ -1,8 +1,6 @@
 package io.sohan.springimg.controller;
 
 import io.sohan.springimg.dtos.ImageDto;
-import io.sohan.springimg.dtos.PathDto;
-import io.sohan.springimg.entities.Images;
 import io.sohan.springimg.service.ImageService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,10 +36,5 @@ public class ImageController {
             imageService.upload(imageDto);
         }
         return ResponseEntity.ok().body("Successfully");
-    }
-    public ImageDto toImageDto(PathDto pathDto){
-        ImageDto imageDto=new ImageDto();
-        imageDto.setPath(pathDto.getPath());
-        return imageDto;
     }
 }
