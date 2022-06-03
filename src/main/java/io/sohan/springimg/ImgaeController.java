@@ -16,16 +16,23 @@ import java.nio.file.StandardCopyOption;
 @RestController
 public class ImgaeController {
 
+    public String path="D:\\SprngScurty\\IMAGES";
     @PostMapping("/upload")
-    public String uploadImage(@RequestParam("file")MultipartFile file) throws IOException {
-        System.out.println(file.getOriginalFilename());
-        System.out.println(file.getName());
-        System.out.println(file.getContentType());
-        System.out.println(file.getSize()/1024+"kb");
+    public String uploadImage(@RequestParam("file")MultipartFile[] files) throws IOException {
 
-        String path="D:\\SprngScurty\\IMAGES";
+        int i=0;
 
-        Files.copy(file.getInputStream(), Paths.get(path+ File.separator+file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
+        for(MultipartFile file: files) {
+            String fname=i+file.getOriginalFilename();
+            Files.copy(file.getInputStream(), Paths.get(path+ File.separator+fname), StandardCopyOption.REPLACE_EXISTING);
+            System.out.println(file.getOriginalFilename());
+            System.out.println(file.getName());
+            System.out.println(file.getContentType());
+            System.out.println(file.getSize()/1024+"kb");
+            System.out.println("==============================");
+            i++;
+        }
+//        Files.copy(file.getInputStream(), Paths.get(path+ File.separator+file.getOriginalFilename()), StandardCopyOption.REPLACE_EXISTING);
         return "successfully upload";
     }
 }
